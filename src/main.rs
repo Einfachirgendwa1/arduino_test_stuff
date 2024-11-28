@@ -103,6 +103,11 @@ fn report() {
     println!();
 }
 
+fn delay(duration: Duration) {
+    report();
+    sleep(duration);
+}
+
 fn main() {
     pin_mode(1, PinMode::Output);
     pin_mode(2, PinMode::Output);
@@ -110,16 +115,13 @@ fn main() {
 
     loop {
         digital_write(1, PinValue::High);
-        report();
-        sleep(Duration::from_secs(1));
+        delay(Duration::from_secs(1));
         digital_write(1, PinValue::Low);
         digital_write(2, PinValue::High);
-        report();
-        sleep(Duration::from_secs(1));
+        delay(Duration::from_secs(1));
         digital_write(2, PinValue::Low);
         digital_write(3, PinValue::High);
-        report();
-        sleep(Duration::from_secs(1));
+        delay(Duration::from_secs(1));
         digital_write(3, PinValue::Low);
     }
 }
